@@ -10,7 +10,9 @@ Envjs.once('tick', function(){
 /**
  * @author thatcher
  */
-exports.Range = Range = function(){};
+exports.Range = Range = function(ownerDocument){
+  this.ownerDocument = ownerDocument;
+};
 
 __extend__(Range.prototype, {
     get startContainer(){
@@ -84,6 +86,11 @@ __extend__(Range.prototype, {
     },
     detach: function(){
 
+    },
+    createContextualFragment : function(html) {      
+      var node = new Node(this.ownerDocument);
+      HTMLParser.parseFragment(html, node);
+      return node.childNodes[0];
     }
 });
 

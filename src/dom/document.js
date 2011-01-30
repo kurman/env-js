@@ -186,7 +186,7 @@ __extend__(Document.prototype,{
 
     createRange: function(){
         log.debug('createRange');
-        return new Range();
+        return new Range(this);
     },
 
     evaluate: function(xpathText, contextNode, nsuriMapper, resultType, result){
